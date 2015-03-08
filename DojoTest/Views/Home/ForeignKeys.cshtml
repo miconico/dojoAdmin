@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "ForeignKeys";
+}
+<div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
+    <h4>Ok so now that we've created 2 table our ninja and badge tables - we might want to look at keeping track of the steps to fulfil a badge</h4>
+    <p>
+        As you can imaginge a table that is going to store the steps required to get a badge is going to be closely "related" to our badge table. In order for us to make the relationship work <br /> we are going to create a special constraint between 
+        <br /> our badge & badgeSteps tables called a foreign key. This will mean that nobody can add in records to our badgeSteps table unless there is a matching key in the badges table. The key that we are going to use for this is the primary key
+        <br /> of the badges table badgeId and we'll also add in a badgeId field to the badgeSteps table. Again this can be scripted as below or mapped using the SQL server designer... 
+        <br /><br />
+ 
+        <code>
+            CREATE TABLE [dbo].[badgeSteps] <br />(<br />
+            [badgeStepId] INT           IDENTITY (1, 1) NOT NULL,<br />
+            [badgeId]     INT           NOT NULL,<br />
+            [stepNo]      INT           DEFAULT ((0)) NOT NULL,<br />
+            [stepDesc]    VARCHAR (250) DEFAULT ('badge internmediate achievement') NOT NULL,<br />
+            [active]      BIT           DEFAULT ((1)) NOT NULL,<br />
+            PRIMARY KEY CLUSTERED ([badgeStepId] ASC),<br />
+            CONSTRAINT [FK_badge_steps_badges] FOREIGN KEY ([badgeId]) REFERENCES [dbo].[badges] ([badgeId])
+            );
+
+        </code>
+    </p>
+</div>
+<br />
+<div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
+    <img src="~/Content/img/foreign_key_badge_steps.png" />
+</div>
+<br />
+<div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
+    <h4>So in the spirit of foreign keys we'll create another table that will store how many steps ninjas have achieved for each badge type which will show full badges earned!</h4>
+    <p> to get a handle on how many steps have been achieved we will create this new table that will only store steps achieved by ninjas
+        <br /> so we know that we'll have to have a link or foreign key back to the badgeSteps table using the badgeStepId field and then of course
+        <br /> we'll need to have a link again a foreign key constraint to identify the ninjas who has achieved the step - using ninjaId column...
+        <br /> if a badge has 4 steps and a ninja has completed them then a check to see if records exists for the ninjaId and each badgeStepId will
+        <br /> be able to show that a ninja has earned that badge!
+        <br /><br />
+
+        <code>
+            CREATE TABLE [dbo].[badgeStepsAchieved] <br />(<br />
+            [stepAchievedId] INT NOT NULL PRIMARY KEY,<br />
+            [badgeStepId] INT NOT NULL,<br />
+            [ninjaId] INT NOT NULL,<br />
+            CONSTRAINT [FK_bagdgeStepsAchieved_badgeSteps] FOREIGN KEY ([badgeStepId]) REFERENCES [badgeSteps]([badgeStepId]),<br />
+            CONSTRAINT [FK_badgeStepsAchieved_ninja] FOREIGN KEY ([ninjaId]) REFERENCES [ninja]([ninjaId])<br />
+            );
+        </code>
+    </p>
+</div>

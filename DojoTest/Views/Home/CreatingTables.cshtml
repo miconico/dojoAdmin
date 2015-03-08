@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "CreatingTables";
+}
+
+<h2>Creating SQL Tables...</h2>
+<br />
+<div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
+    <h4>We've made a stab at what tables we might need we can start to look at creating them... </h4>
+    <p>The syntax for SQL is fairly universal which is handy so if you can master it - you can try it out in SQL server, Oracle, DB2 mySql 
+    and other database systems. I'm using the built in SQL Compact engine that comes with visual studio community edition (as part of all the bumph...)
+    you can write the SQL scripts free hand when you get very familiar - but otherwise there are "designers" to help...
+        <br /><br />
+    <code>CREATE TABLE [dbo].[ninja]<br /><br />
+(
+	[ninjaId] INT NOT NULL PRIMARY KEY IDENTITY,<br />
+    [ninjaName] VARCHAR(100) NOT NULL DEFAULT '',<br />
+    [classId] INT NOT NULL,<br />
+    [bio] VARCHAR(MAX) NULL DEFAULT 'codeninja',<br />
+    [joined] DATETIME NOT NULL DEFAULT getdate(),<br />
+    [websiteUrl] VARCHAR(250) NULL DEFAULT 'http://coderdojoport.com',<br />
+    [active] BIT NOT NULL DEFAULT 1
+)
+</code></p>
+</div>
+<div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
+    <img src="~/Content/img/ninja_tab.png" />   
+</div>
+<br />
+<div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
+    <h4>So thats our first table - and its the most important the ninja table..! next we want to track how our ninjas are getting on collecting badges...so </h4>
+    <p>
+        We're going to use our designer to create another table - this one will have a unique identifier or primary key to denote each badge that ninjas can be awarded. The term primary key is used to ensure that each badge row in the table cannot be confused with another row - which is very important in database tables...
+        <br /><br />
+        <code>
+            CREATE TABLE [dbo].[badges]<br />
+            (
+            [badgeId] INT NOT NULL PRIMARY KEY IDENTITY,<br />
+            [name] VARCHAR(250) NOT NULL DEFAULT 'Ninja Badge',<br />
+            [description] VARCHAR(MAX) NOT NULL DEFAULT 'Being cool',<br />
+            [badgeStepId] INT NOT NULL,<br />
+            [active] BIT NOT NULL DEFAULT 1<br />
+            )
+
+        </code>
+    </p>
+</div>

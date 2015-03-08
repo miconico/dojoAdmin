@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "dojoClass";
+}
+
+<h2>Our next tables will cover off dojoClasses, mentors & attendance..!</h2>
+<br />
+
+<div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
+    <h4>The dojoClass is a table that we can use to define all the different classes that are available in the dojo and what they're about</h4>
+    <p>
+        - we can add in useful fields like classUrl and mentorId which will become a foreign key when we get around to creating the mentor table...!
+        <br /><br />
+        <code>
+            CREATE TABLE [dbo].[dojoClass]<br />
+            (<br />
+            [classId] INT NOT NULL PRIMARY KEY,<br />
+            [className] VARCHAR(MAX) NOT NULL DEFAULT 'dojo 101',<br />
+            [classDesc] VARCHAR(MAX) NOT NULL DEFAULT 'dojo magic factory',<br />
+            [mentorId] INT NOT NULL DEFAULT 0,<br />
+            [dateCommenced] DATETIME NOT NULL DEFAULT getdate(),<br />
+            [classUrl] VARCHAR(250) NOT NULL DEFAULT 'http://coderdojoport.com',<br />
+            [active] BIT NOT NULL DEFAULT 1<br />
+            )<br />
+        </code>
+    </p>
+</div>
+<br />
+<div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
+    <h4>We're going to create a mentor table now so that we can keep track of our dojo mojo's! </h4>
+    <p>
+        The mentor table will now enable us to create a foreign key in our dojoClass table on mentorId and also this will enable us to start to build our attendance tables - ninjaAttendance, mentorAttendance....      <br /><br />
+        <code>
+            CREATE TABLE [dbo].[mentor]<br />
+            (<br />
+            [mentorId] INT NOT NULL PRIMARY KEY,<br />
+            [forename] VARCHAR(100) NOT NULL DEFAULT 'sensei',<br />
+            [surname] VARCHAR(100) NOT NULL DEFAULT 'sensei',<br />
+            [bio] VARCHAR(MAX) NOT NULL DEFAULT 'dojo mojo maker',<br />
+            [mentorUrl] VARCHAR(250) NOT NULL DEFAULT 'http://coderdojoport.com',<br />
+            [dateJoined] DATETIME NOT NULL DEFAULT getdate(),<br />
+            [active] BIT NOT NULL DEFAULT 1<br />
+            )<br />
+
+
+        </code>
+        <br />
+        <br />
+        just to see this is the script we'll be applying to set the foreign key on our dojoClass table -
+        <br />
+        <code>
+            CONSTRAINT [FK_dojoClass_mentor] FOREIGN KEY ([mentorId]) REFERENCES [mentor]([mentorId])
+        </code>
+    </p>
+</div>

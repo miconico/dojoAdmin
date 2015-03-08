@@ -1,0 +1,47 @@
+﻿<br />
+@{
+    ViewBag.Title = "Attendance";
+}
+
+<h2>These attendance tables are key cogs in how we'll hang everything together in our app..!</h2>
+<br />
+
+<div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
+    <h4>The ninja attendance table is important because by storing this electronically in the database you then open up opportunities to do some exciting things..!  </h4>
+    <p>
+        For the ninja attendance table we'll put in a primary key which is always a good idea and as well we will want to see the ninjaId and the classId and also mentorId other important stuff
+        is what was the date.time ninjas checked in at ...
+        <br /><br />
+        <code>
+            CREATE TABLE [dbo].[ninjaAttendance]<br />
+            (<br />
+            [ninjaId] INT NOT NULL PRIMARY KEY,<br />
+            [classId] INT NOT NULL,<br />
+            [classDate] DATETIME NOT NULL DEFAULT getdate(),<br />
+            CONSTRAINT [FK_ninjaAttendance_dojoClass] FOREIGN KEY ([classId]) REFERENCES [dojoClass]([classId]),<br />
+            CONSTRAINT [FK_ninjaAttendance_ninja] FOREIGN KEY ([ninjaId]) REFERENCES [ninja]([ninjaId])<br />
+            )<br />
+
+        </code>
+    </p>
+</div>
+<br />
+<div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
+    <h4>The mentor attendance table is in the same structure as the ninjaAttendance table and will be used to keep a record of what mentors were in what classes </h4>
+    <p>The mentor table can also be populated with multiple mentors per class so that while there might be only one mentor in the linked dojoClass table - there can be many mentors in the class on the day... <br /><br />
+        <code>
+            CREATE TABLE [dbo].[ninjaAttendance]<br />
+            (<br />
+            [ninjaICREATE TABLE [dbo].[mentorAttendance]<br />
+            (<br />
+	            [mentorId] INT NOT NULL PRIMARY KEY,<br />
+                [classId] INT NOT NULL,<br />
+                [classDate] DATETIME NOT NULL DEFAULT getdate(),<br />
+                CONSTRAINT [FK_mentorAttendance_mentor] FOREIGN KEY ([mentorId]) REFERENCES [mentor]([mentorId]),<br />
+                CONSTRAINT [FK_mentorAttendance_dojoClass] FOREIGN KEY ([classId]) REFERENCES [dojoClass]([classId])<br />
+            )<br />
+            <br />
+
+        </code>
+    </p>
+</div>
