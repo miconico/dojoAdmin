@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DojoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="badges">
+          <Key>
+            <PropertyRef Name="badgeId" />
+          </Key>
+          <Property Name="badgeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="description" Type="varchar(max)" Nullable="false" />
+          <Property Name="badgeStepId" Type="int" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="badgeSteps">
+          <Key>
+            <PropertyRef Name="badgeStepId" />
+          </Key>
+          <Property Name="badgeStepId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="badgeId" Type="int" Nullable="false" />
+          <Property Name="stepNo" Type="int" Nullable="false" />
+          <Property Name="stepDesc" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="badgeStepsAchieved">
+          <Key>
+            <PropertyRef Name="stepAchievedId" />
+          </Key>
+          <Property Name="stepAchievedId" Type="int" Nullable="false" />
+          <Property Name="badgeStepId" Type="int" Nullable="false" />
+          <Property Name="ninjaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dojoClass">
+          <Key>
+            <PropertyRef Name="classId" />
+          </Key>
+          <Property Name="classId" Type="int" Nullable="false" />
+          <Property Name="className" Type="varchar(max)" Nullable="false" />
+          <Property Name="classDesc" Type="varchar(max)" Nullable="false" />
+          <Property Name="mentorId" Type="int" Nullable="false" />
+          <Property Name="dateCommenced" Type="datetime" Nullable="false" />
+          <Property Name="classUrl" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mentor">
+          <Key>
+            <PropertyRef Name="mentorId" />
+          </Key>
+          <Property Name="mentorId" Type="int" Nullable="false" />
+          <Property Name="forename" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="bio" Type="varchar(max)" Nullable="false" />
+          <Property Name="mentorUrl" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="dateJoined" Type="datetime" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mentorAttendance">
+          <Key>
+            <PropertyRef Name="mentorId" />
+          </Key>
+          <Property Name="mentorId" Type="int" Nullable="false" />
+          <Property Name="classId" Type="int" Nullable="false" />
+          <Property Name="classDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ninja">
+          <Key>
+            <PropertyRef Name="ninjaId" />
+          </Key>
+          <Property Name="ninjaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ninjaName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="classId" Type="int" Nullable="false" />
+          <Property Name="bio" Type="varchar(max)" />
+          <Property Name="joined" Type="datetime" Nullable="false" />
+          <Property Name="websiteUrl" Type="varchar" MaxLength="250" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ninjaAttendance">
+          <Key>
+            <PropertyRef Name="ninjaId" />
+          </Key>
+          <Property Name="ninjaId" Type="int" Nullable="false" />
+          <Property Name="classId" Type="int" Nullable="false" />
+          <Property Name="classDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_badge_steps_badges">
+          <End Role="badges" Type="Self.badges" Multiplicity="1" />
+          <End Role="badgeSteps" Type="Self.badgeSteps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="badges">
+              <PropertyRef Name="badgeId" />
+            </Principal>
+            <Dependent Role="badgeSteps">
+              <PropertyRef Name="badgeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_badgeStepsAchieved_ninja">
+          <End Role="ninja" Type="Self.ninja" Multiplicity="1" />
+          <End Role="badgeStepsAchieved" Type="Self.badgeStepsAchieved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ninja">
+              <PropertyRef Name="ninjaId" />
+            </Principal>
+            <Dependent Role="badgeStepsAchieved">
+              <PropertyRef Name="ninjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bagdgeStepsAchieved_badgeSteps">
+          <End Role="badgeSteps" Type="Self.badgeSteps" Multiplicity="1" />
+          <End Role="badgeStepsAchieved" Type="Self.badgeStepsAchieved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="badgeSteps">
+              <PropertyRef Name="badgeStepId" />
+            </Principal>
+            <Dependent Role="badgeStepsAchieved">
+              <PropertyRef Name="badgeStepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dojoClass_mentor">
+          <End Role="mentor" Type="Self.mentor" Multiplicity="1" />
+          <End Role="dojoClass" Type="Self.dojoClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mentor">
+              <PropertyRef Name="mentorId" />
+            </Principal>
+            <Dependent Role="dojoClass">
+              <PropertyRef Name="mentorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mentorAttendance_dojoClass">
+          <End Role="dojoClass" Type="Self.dojoClass" Multiplicity="1" />
+          <End Role="mentorAttendance" Type="Self.mentorAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dojoClass">
+              <PropertyRef Name="classId" />
+            </Principal>
+            <Dependent Role="mentorAttendance">
+              <PropertyRef Name="classId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mentorAttendance_mentor">
+          <End Role="mentor" Type="Self.mentor" Multiplicity="1" />
+          <End Role="mentorAttendance" Type="Self.mentorAttendance" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="mentor">
+              <PropertyRef Name="mentorId" />
+            </Principal>
+            <Dependent Role="mentorAttendance">
+              <PropertyRef Name="mentorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ninjaAttendance_dojoClass">
+          <End Role="dojoClass" Type="Self.dojoClass" Multiplicity="1" />
+          <End Role="ninjaAttendance" Type="Self.ninjaAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dojoClass">
+              <PropertyRef Name="classId" />
+            </Principal>
+            <Dependent Role="ninjaAttendance">
+              <PropertyRef Name="classId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ninjaAttendance_ninja">
+          <End Role="ninja" Type="Self.ninja" Multiplicity="1" />
+          <End Role="ninjaAttendance" Type="Self.ninjaAttendance" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ninja">
+              <PropertyRef Name="ninjaId" />
+            </Principal>
+            <Dependent Role="ninjaAttendance">
+              <PropertyRef Name="ninjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DojoModelStoreContainer">
+          <EntitySet Name="badges" EntityType="Self.badges" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="badgeSteps" EntityType="Self.badgeSteps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="badgeStepsAchieved" EntityType="Self.badgeStepsAchieved" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dojoClass" EntityType="Self.dojoClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mentor" EntityType="Self.mentor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mentorAttendance" EntityType="Self.mentorAttendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ninja" EntityType="Self.ninja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ninjaAttendance" EntityType="Self.ninjaAttendance" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_badge_steps_badges" Association="Self.FK_badge_steps_badges">
+            <End Role="badges" EntitySet="badges" />
+            <End Role="badgeSteps" EntitySet="badgeSteps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_badgeStepsAchieved_ninja" Association="Self.FK_badgeStepsAchieved_ninja">
+            <End Role="ninja" EntitySet="ninja" />
+            <End Role="badgeStepsAchieved" EntitySet="badgeStepsAchieved" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bagdgeStepsAchieved_badgeSteps" Association="Self.FK_bagdgeStepsAchieved_badgeSteps">
+            <End Role="badgeSteps" EntitySet="badgeSteps" />
+            <End Role="badgeStepsAchieved" EntitySet="badgeStepsAchieved" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dojoClass_mentor" Association="Self.FK_dojoClass_mentor">
+            <End Role="mentor" EntitySet="mentor" />
+            <End Role="dojoClass" EntitySet="dojoClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mentorAttendance_dojoClass" Association="Self.FK_mentorAttendance_dojoClass">
+            <End Role="dojoClass" EntitySet="dojoClass" />
+            <End Role="mentorAttendance" EntitySet="mentorAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mentorAttendance_mentor" Association="Self.FK_mentorAttendance_mentor">
+            <End Role="mentor" EntitySet="mentor" />
+            <End Role="mentorAttendance" EntitySet="mentorAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ninjaAttendance_dojoClass" Association="Self.FK_ninjaAttendance_dojoClass">
+            <End Role="dojoClass" EntitySet="dojoClass" />
+            <End Role="ninjaAttendance" EntitySet="ninjaAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ninjaAttendance_ninja" Association="Self.FK_ninjaAttendance_ninja">
+            <End Role="ninja" EntitySet="ninja" />
+            <End Role="ninjaAttendance" EntitySet="ninjaAttendance" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DojoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="badge">
+          <Key>
+            <PropertyRef Name="badgeId" />
+          </Key>
+          <Property Name="badgeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="badgeStepId" Type="Int32" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="badgeSteps" Relationship="Self.FK_badge_steps_badges" FromRole="badges" ToRole="badgeSteps" />
+        </EntityType>
+        <EntityType Name="badgeStep">
+          <Key>
+            <PropertyRef Name="badgeStepId" />
+          </Key>
+          <Property Name="badgeStepId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="badgeId" Type="Int32" Nullable="false" />
+          <Property Name="stepNo" Type="Int32" Nullable="false" />
+          <Property Name="stepDesc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="badge" Relationship="Self.FK_badge_steps_badges" FromRole="badgeSteps" ToRole="badges" />
+          <NavigationProperty Name="badgeStepsAchieveds" Relationship="Self.FK_bagdgeStepsAchieved_badgeSteps" FromRole="badgeSteps" ToRole="badgeStepsAchieved" />
+        </EntityType>
+        <EntityType Name="badgeStepsAchieved">
+          <Key>
+            <PropertyRef Name="stepAchievedId" />
+          </Key>
+          <Property Name="stepAchievedId" Type="Int32" Nullable="false" />
+          <Property Name="badgeStepId" Type="Int32" Nullable="false" />
+          <Property Name="ninjaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="badgeStep" Relationship="Self.FK_bagdgeStepsAchieved_badgeSteps" FromRole="badgeStepsAchieved" ToRole="badgeSteps" />
+          <NavigationProperty Name="ninja" Relationship="Self.FK_badgeStepsAchieved_ninja" FromRole="badgeStepsAchieved" ToRole="ninja" />
+        </EntityType>
+        <EntityType Name="dojoClass">
+          <Key>
+            <PropertyRef Name="classId" />
+          </Key>
+          <Property Name="classId" Type="Int32" Nullable="false" />
+          <Property Name="className" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="classDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mentorId" Type="Int32" Nullable="false" />
+          <Property Name="dateCommenced" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="classUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="mentor" Relationship="Self.FK_dojoClass_mentor" FromRole="dojoClass" ToRole="mentor" />
+          <NavigationProperty Name="mentorAttendances" Relationship="Self.FK_mentorAttendance_dojoClass" FromRole="dojoClass" ToRole="mentorAttendance" />
+          <NavigationProperty Name="ninjaAttendances" Relationship="Self.FK_ninjaAttendance_dojoClass" FromRole="dojoClass" ToRole="ninjaAttendance" />
+        </EntityType>
+        <EntityType Name="mentor">
+          <Key>
+            <PropertyRef Name="mentorId" />
+          </Key>
+          <Property Name="mentorId" Type="Int32" Nullable="false" />
+          <Property Name="forename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mentorUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateJoined" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="dojoClasses" Relationship="Self.FK_dojoClass_mentor" FromRole="mentor" ToRole="dojoClass" />
+          <NavigationProperty Name="mentorAttendance" Relationship="Self.FK_mentorAttendance_mentor" FromRole="mentor" ToRole="mentorAttendance" />
+        </EntityType>
+        <EntityType Name="mentorAttendance">
+          <Key>
+            <PropertyRef Name="mentorId" />
+          </Key>
+          <Property Name="mentorId" Type="Int32" Nullable="false" />
+          <Property Name="classId" Type="Int32" Nullable="false" />
+          <Property Name="classDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="dojoClass" Relationship="Self.FK_mentorAttendance_dojoClass" FromRole="mentorAttendance" ToRole="dojoClass" />
+          <NavigationProperty Name="mentor" Relationship="Self.FK_mentorAttendance_mentor" FromRole="mentorAttendance" ToRole="mentor" />
+        </EntityType>
+        <EntityType Name="ninja">
+          <Key>
+            <PropertyRef Name="ninjaId" />
+          </Key>
+          <Property Name="ninjaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ninjaName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="classId" Type="Int32" Nullable="false" />
+          <Property Name="bio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="joined" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="websiteUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="badgeStepsAchieveds" Relationship="Self.FK_badgeStepsAchieved_ninja" FromRole="ninja" ToRole="badgeStepsAchieved" />
+          <NavigationProperty Name="ninjaAttendance" Relationship="Self.FK_ninjaAttendance_ninja" FromRole="ninja" ToRole="ninjaAttendance" />
+        </EntityType>
+        <EntityType Name="ninjaAttendance">
+          <Key>
+            <PropertyRef Name="ninjaId" />
+          </Key>
+          <Property Name="ninjaId" Type="Int32" Nullable="false" />
+          <Property Name="classId" Type="Int32" Nullable="false" />
+          <Property Name="classDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="dojoClass" Relationship="Self.FK_ninjaAttendance_dojoClass" FromRole="ninjaAttendance" ToRole="dojoClass" />
+          <NavigationProperty Name="ninja" Relationship="Self.FK_ninjaAttendance_ninja" FromRole="ninjaAttendance" ToRole="ninja" />
+        </EntityType>
+        <Association Name="FK_badge_steps_badges">
+          <End Role="badges" Type="Self.badge" Multiplicity="1" />
+          <End Role="badgeSteps" Type="Self.badgeStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="badges">
+              <PropertyRef Name="badgeId" />
+            </Principal>
+            <Dependent Role="badgeSteps">
+              <PropertyRef Name="badgeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bagdgeStepsAchieved_badgeSteps">
+          <End Role="badgeSteps" Type="Self.badgeStep" Multiplicity="1" />
+          <End Role="badgeStepsAchieved" Type="Self.badgeStepsAchieved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="badgeSteps">
+              <PropertyRef Name="badgeStepId" />
+            </Principal>
+            <Dependent Role="badgeStepsAchieved">
+              <PropertyRef Name="badgeStepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_badgeStepsAchieved_ninja">
+          <End Role="ninja" Type="Self.ninja" Multiplicity="1" />
+          <End Role="badgeStepsAchieved" Type="Self.badgeStepsAchieved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ninja">
+              <PropertyRef Name="ninjaId" />
+            </Principal>
+            <Dependent Role="badgeStepsAchieved">
+              <PropertyRef Name="ninjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dojoClass_mentor">
+          <End Role="mentor" Type="Self.mentor" Multiplicity="1" />
+          <End Role="dojoClass" Type="Self.dojoClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mentor">
+              <PropertyRef Name="mentorId" />
+            </Principal>
+            <Dependent Role="dojoClass">
+              <PropertyRef Name="mentorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mentorAttendance_dojoClass">
+          <End Role="dojoClass" Type="Self.dojoClass" Multiplicity="1" />
+          <End Role="mentorAttendance" Type="Self.mentorAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dojoClass">
+              <PropertyRef Name="classId" />
+            </Principal>
+            <Dependent Role="mentorAttendance">
+              <PropertyRef Name="classId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ninjaAttendance_dojoClass">
+          <End Role="dojoClass" Type="Self.dojoClass" Multiplicity="1" />
+          <End Role="ninjaAttendance" Type="Self.ninjaAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dojoClass">
+              <PropertyRef Name="classId" />
+            </Principal>
+            <Dependent Role="ninjaAttendance">
+              <PropertyRef Name="classId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mentorAttendance_mentor">
+          <End Role="mentor" Type="Self.mentor" Multiplicity="1" />
+          <End Role="mentorAttendance" Type="Self.mentorAttendance" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="mentor">
+              <PropertyRef Name="mentorId" />
+            </Principal>
+            <Dependent Role="mentorAttendance">
+              <PropertyRef Name="mentorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ninjaAttendance_ninja">
+          <End Role="ninja" Type="Self.ninja" Multiplicity="1" />
+          <End Role="ninjaAttendance" Type="Self.ninjaAttendance" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ninja">
+              <PropertyRef Name="ninjaId" />
+            </Principal>
+            <Dependent Role="ninjaAttendance">
+              <PropertyRef Name="ninjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DojoContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="badges" EntityType="Self.badge" />
+          <EntitySet Name="badgeSteps" EntityType="Self.badgeStep" />
+          <EntitySet Name="badgeStepsAchieveds" EntityType="Self.badgeStepsAchieved" />
+          <EntitySet Name="dojoClasses" EntityType="Self.dojoClass" />
+          <EntitySet Name="mentors" EntityType="Self.mentor" />
+          <EntitySet Name="mentorAttendances" EntityType="Self.mentorAttendance" />
+          <EntitySet Name="ninjas" EntityType="Self.ninja" />
+          <EntitySet Name="ninjaAttendances" EntityType="Self.ninjaAttendance" />
+          <AssociationSet Name="FK_badge_steps_badges" Association="Self.FK_badge_steps_badges">
+            <End Role="badges" EntitySet="badges" />
+            <End Role="badgeSteps" EntitySet="badgeSteps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bagdgeStepsAchieved_badgeSteps" Association="Self.FK_bagdgeStepsAchieved_badgeSteps">
+            <End Role="badgeSteps" EntitySet="badgeSteps" />
+            <End Role="badgeStepsAchieved" EntitySet="badgeStepsAchieveds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_badgeStepsAchieved_ninja" Association="Self.FK_badgeStepsAchieved_ninja">
+            <End Role="ninja" EntitySet="ninjas" />
+            <End Role="badgeStepsAchieved" EntitySet="badgeStepsAchieveds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dojoClass_mentor" Association="Self.FK_dojoClass_mentor">
+            <End Role="mentor" EntitySet="mentors" />
+            <End Role="dojoClass" EntitySet="dojoClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mentorAttendance_dojoClass" Association="Self.FK_mentorAttendance_dojoClass">
+            <End Role="dojoClass" EntitySet="dojoClasses" />
+            <End Role="mentorAttendance" EntitySet="mentorAttendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ninjaAttendance_dojoClass" Association="Self.FK_ninjaAttendance_dojoClass">
+            <End Role="dojoClass" EntitySet="dojoClasses" />
+            <End Role="ninjaAttendance" EntitySet="ninjaAttendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mentorAttendance_mentor" Association="Self.FK_mentorAttendance_mentor">
+            <End Role="mentor" EntitySet="mentors" />
+            <End Role="mentorAttendance" EntitySet="mentorAttendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ninjaAttendance_ninja" Association="Self.FK_ninjaAttendance_ninja">
+            <End Role="ninja" EntitySet="ninjas" />
+            <End Role="ninjaAttendance" EntitySet="ninjaAttendances" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DojoModelStoreContainer" CdmEntityContainer="DojoContext">
+          <EntitySetMapping Name="badges">
+            <EntityTypeMapping TypeName="DojoModel.badge">
+              <MappingFragment StoreEntitySet="badges">
+                <ScalarProperty Name="badgeId" ColumnName="badgeId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="badgeStepId" ColumnName="badgeStepId" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="badgeSteps">
+            <EntityTypeMapping TypeName="DojoModel.badgeStep">
+              <MappingFragment StoreEntitySet="badgeSteps">
+                <ScalarProperty Name="badgeStepId" ColumnName="badgeStepId" />
+                <ScalarProperty Name="badgeId" ColumnName="badgeId" />
+                <ScalarProperty Name="stepNo" ColumnName="stepNo" />
+                <ScalarProperty Name="stepDesc" ColumnName="stepDesc" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="badgeStepsAchieveds">
+            <EntityTypeMapping TypeName="DojoModel.badgeStepsAchieved">
+              <MappingFragment StoreEntitySet="badgeStepsAchieved">
+                <ScalarProperty Name="stepAchievedId" ColumnName="stepAchievedId" />
+                <ScalarProperty Name="badgeStepId" ColumnName="badgeStepId" />
+                <ScalarProperty Name="ninjaId" ColumnName="ninjaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dojoClasses">
+            <EntityTypeMapping TypeName="DojoModel.dojoClass">
+              <MappingFragment StoreEntitySet="dojoClass">
+                <ScalarProperty Name="classId" ColumnName="classId" />
+                <ScalarProperty Name="className" ColumnName="className" />
+                <ScalarProperty Name="classDesc" ColumnName="classDesc" />
+                <ScalarProperty Name="mentorId" ColumnName="mentorId" />
+                <ScalarProperty Name="dateCommenced" ColumnName="dateCommenced" />
+                <ScalarProperty Name="classUrl" ColumnName="classUrl" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mentors">
+            <EntityTypeMapping TypeName="DojoModel.mentor">
+              <MappingFragment StoreEntitySet="mentor">
+                <ScalarProperty Name="mentorId" ColumnName="mentorId" />
+                <ScalarProperty Name="forename" ColumnName="forename" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="bio" ColumnName="bio" />
+                <ScalarProperty Name="mentorUrl" ColumnName="mentorUrl" />
+                <ScalarProperty Name="dateJoined" ColumnName="dateJoined" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mentorAttendances">
+            <EntityTypeMapping TypeName="DojoModel.mentorAttendance">
+              <MappingFragment StoreEntitySet="mentorAttendance">
+                <ScalarProperty Name="mentorId" ColumnName="mentorId" />
+                <ScalarProperty Name="classId" ColumnName="classId" />
+                <ScalarProperty Name="classDate" ColumnName="classDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ninjas">
+            <EntityTypeMapping TypeName="DojoModel.ninja">
+              <MappingFragment StoreEntitySet="ninja">
+                <ScalarProperty Name="ninjaId" ColumnName="ninjaId" />
+                <ScalarProperty Name="ninjaName" ColumnName="ninjaName" />
+                <ScalarProperty Name="classId" ColumnName="classId" />
+                <ScalarProperty Name="bio" ColumnName="bio" />
+                <ScalarProperty Name="joined" ColumnName="joined" />
+                <ScalarProperty Name="websiteUrl" ColumnName="websiteUrl" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ninjaAttendances">
+            <EntityTypeMapping TypeName="DojoModel.ninjaAttendance">
+              <MappingFragment StoreEntitySet="ninjaAttendance">
+                <ScalarProperty Name="ninjaId" ColumnName="ninjaId" />
+                <ScalarProperty Name="classId" ColumnName="classId" />
+                <ScalarProperty Name="classDate" ColumnName="classDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
