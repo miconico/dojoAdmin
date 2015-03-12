@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DojoTest", "DojoTest\DojoTest.csproj", "{2835FDBA-96BA-4D5C-850D-A909BB12F4E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBServices", "DBServices\DBServices.csproj", "{628A6EA2-33A0-44D4-BB8D-64C8A17EB4D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2835FDBA-96BA-4D5C-850D-A909BB12F4E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2835FDBA-96BA-4D5C-850D-A909BB12F4E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2835FDBA-96BA-4D5C-850D-A909BB12F4E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{628A6EA2-33A0-44D4-BB8D-64C8A17EB4D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{628A6EA2-33A0-44D4-BB8D-64C8A17EB4D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{628A6EA2-33A0-44D4-BB8D-64C8A17EB4D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{628A6EA2-33A0-44D4-BB8D-64C8A17EB4D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

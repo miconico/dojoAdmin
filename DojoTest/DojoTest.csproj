@@ -114,6 +114,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.1.1\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -202,22 +204,72 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="badge.cs">
+      <DependentUpon>ninjaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="badgeStep.cs">
+      <DependentUpon>ninjaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="badgeStepsAchieved.cs">
+      <DependentUpon>ninjaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ninjaController.cs" />
+    <Compile Include="DBServices\NinjaDBServices.cs" />
+    <Compile Include="dojoClass.cs">
+      <DependentUpon>ninjaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="mentor.cs">
+      <DependentUpon>ninjaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mentorAttendance.cs">
+      <DependentUpon>ninjaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ninja.cs">
+      <DependentUpon>ninjaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ninjaAttendance.cs">
+      <DependentUpon>ninjaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ninjaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ninjaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ninjaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ninjaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ninjaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ninjaModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Dojo.mdf" />
+    <Content Include="App_Data\Dojo_log.ldf">
+      <DependentUpon>Dojo.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\img\AddEntityFramework.png" />
+    <Content Include="Content\img\AddField.png" />
+    <Content Include="Content\img\ADO.NETEntityDataModel.png" />
     <Content Include="Content\img\badges_tab.png" />
     <Content Include="Content\img\DatabaseObjects.png" />
     <Content Include="Content\img\foreign_key_badge_steps.png" />
+    <Content Include="Content\img\GITCheckIn.png" />
     <Content Include="Content\img\ninja_tab.png" />
+    <Content Include="Content\img\updateEDMXModel.png" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -303,6 +355,23 @@
     <None Include="BundleTransformer.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>
+    <EntityDeploy Include="ninjaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ninjaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ninjaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ninjaModel.edmx</DependentUpon>
+      <LastGenOutput>ninjaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ninjaModel.edmx.diagram">
+      <DependentUpon>ninjaModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="ninjaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ninjaModel.edmx</DependentUpon>
+      <LastGenOutput>ninjaModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -351,13 +420,21 @@
     <Content Include="Views\Home\Attendance.cshtml" />
     <Content Include="Views\Home\DojoClass.cshtml" />
     <Content Include="Views\Home\Mentors.cshtml" />
+    <Content Include="Views\Home\EntityFramework.cshtml" />
+    <Content Include="Views\Home\NinjaAppServices.cshtml" />
+    <Content Include="Views\ninja\Create.cshtml" />
+    <Content Include="Views\ninja\Delete.cshtml" />
+    <Content Include="Views\ninja\Details.cshtml" />
+    <Content Include="Views\ninja\Edit.cshtml" />
+    <Content Include="Views\ninja\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="DojoModel.dojoClass" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DojoModel.mentor" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DojoModel.mentorAttendance" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DojoModel.ninja" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DojoModel.ninja" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="DojoModel.ninjaAttendance" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="DojoModel.FK_badge_steps_badges" ManuallyRouted="false" />
         <AssociationConnector Association="DojoModel.FK_bagdgeStepsAchieved_badgeSteps" ManuallyRouted="false" />

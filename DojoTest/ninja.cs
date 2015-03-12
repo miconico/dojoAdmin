@@ -26,6 +26,7 @@ namespace DojoTest
         public System.DateTime joined { get; set; }
         public string websiteUrl { get; set; }
         public bool active { get; set; }
+        public Nullable<System.DateTime> DOB { get; set; }
     
         public virtual ICollection<badgeStepsAchieved> badgeStepsAchieveds { get; set; }
         public virtual ninjaAttendance ninjaAttendance { get; set; }

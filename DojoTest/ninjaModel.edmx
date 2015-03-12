@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DojoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DojoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="badges">
           <Key>
             <PropertyRef Name="badgeId" />
@@ -75,6 +75,7 @@
           <Property Name="bio" Type="varchar(max)" />
           <Property Name="joined" Type="datetime" Nullable="false" />
           <Property Name="websiteUrl" Type="varchar" MaxLength="250" />
+          <Property Name="DOB" Type="date" />
           <Property Name="active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ninjaAttendance">
@@ -223,8 +224,7 @@
             <End Role="ninjaAttendance" EntitySet="ninjaAttendance" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DojoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -313,6 +313,7 @@
           <Property Name="active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="badgeStepsAchieveds" Relationship="Self.FK_badgeStepsAchieved_ninja" FromRole="ninja" ToRole="badgeStepsAchieved" />
           <NavigationProperty Name="ninjaAttendance" Relationship="Self.FK_ninjaAttendance_ninja" FromRole="ninja" ToRole="ninjaAttendance" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="ninjaAttendance">
           <Key>
@@ -537,6 +538,7 @@
           <EntitySetMapping Name="ninjas">
             <EntityTypeMapping TypeName="DojoModel.ninja">
               <MappingFragment StoreEntitySet="ninja">
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
                 <ScalarProperty Name="ninjaId" ColumnName="ninjaId" />
                 <ScalarProperty Name="ninjaName" ColumnName="ninjaName" />
                 <ScalarProperty Name="classId" ColumnName="classId" />

@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "NinjaAppServices";
+}
+
+<h2>Ninja App Services</h2>
+<br />
+
+<div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
+    <h4>There's not much point in building out our database and designing the table stucture if we dont know what we want our ninjaApp to do...</h4>
+    <p>
+        So lets think about where we would like to take this... <br /> at a high level we want an app that will ...
+        <br />
+        <br />
+        <code>
+
+            - track ninjas in the dojo<br />
+            - track mentors in the dojo<br />
+            - track badges offered by the dojo<br />
+            - track the steps required to achieve a badge<br />
+            - track how many steps ninjas have achieved for each active badge<br />
+            - track attendance in the dojo by ninjas<br />
+            - track attendance in the dojo by mentors<br />
+        </code>
+        <br />
+        <h4>Breaking down the requirements into smaller pieces - and getting at the detail</h4>
+        hmmmm ok that all sounds reasonable and if we had an app that could do all that we'd be happy ninjas :). But as part of our design we need to break things down even
+        more in order to identify exactly what interfaces our ninjaService layer will need to provide so that we can have a fully functioning application.<br />
+        <br />Well without ninjas there is no dojo...! so we need to be able to add in a ninja to the dojo. We would use an input screen to help us capture the details required
+        <br /> and then pass them through to our database for insertion. <br /> As part of the inputs we need to look at validation around the fields that we'll be accepting values
+        for and thinking about that - I've just realised that we should have a Date Of Birth field on our ninja table - Doh! So im quickly re-opening the ninja table and adding in
+        a DOB field of time DATE. Then we click the update button in the designer which adds in the column and then we double-click on our ninjaModel.EDMX
+        right-click on the clean area and select "update model from database" - this will then sync our changes and the DOB field should be visible...
+        <br /><br /><b>Update the EDMX Model</b><br /><img src="~/Content/img/updateEDMXModel.png" alt="Update the EDMX model" />
+        <br /><br /><b>Show that the model now reflects our new field DOB on the ninja table</b><br /><img src="~/Content/img/AddField.png" alt="show added field" />
+        </p>
+</div>
+<div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin"><br />
+    <h4>Using the Entity Framework to build out or "Scaffold" our application screens</h4>
+    <p>now where were we - ahem - yes we wanted to think about validation on our ninja input screen - and now we have our DOB field - we'll have to make sure that the DOB's are in
+        the correct format and also that we don't have any who are born in the future or in the wrong format etc.
+    A very useful tool when you've got the entity framework in your application like we have is that you can create scaffolded screens
+    for the basic CRUD (Create, Read, Update + Delete) operations automatically. This is not always the best approach but for our application it 
+    will provide us with a good start.
+    <br />
+    Before we generate our first CRUD scaffold I'm going to check in our code to the GITHub account - and make sure its well labeled. This is a very
+    important part of your coding practise and it means that you and other people can keep a close eye on your development progress and do things
+    like roll-back changes that didn't work or pull in code from other people who are contributing to the project...
+    <br /><br /><b>Using <a href="">GIT</a> - with <a href="">Atlassian SourceTree</a></b><br />
+    <img src="~/Content/img/GITCheckIn.png" alt="GIT Checkin" /><br /><br />
+        <h4>In order to get the scaffolded code running we need to do the following...</h4>
+    
+    Check out this URL for a step-by-step tutorial on adding in the Entity Framework - Scaffolded items on the MS ASP.NET site - <a href="https://www.asp.net/mvc/overview/getting-started/database-first-development/generating-views">here</a></p>
+</div>
