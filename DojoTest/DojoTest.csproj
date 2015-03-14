@@ -215,7 +215,8 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ninjaController.cs" />
+    <Compile Include="Controllers\NinjaController.cs" />
+    <Compile Include="Controllers\TutorialController.cs" />
     <Compile Include="DBServices\NinjaDBServices.cs" />
     <Compile Include="dojoClass.cs">
       <DependentUpon>ninjaModel.tt</DependentUpon>
@@ -263,11 +264,18 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\img\AddEntityFramework.png" />
     <Content Include="Content\img\AddField.png" />
+    <Content Include="Content\img\AddScaffoldedItem.png" />
     <Content Include="Content\img\ADO.NETEntityDataModel.png" />
     <Content Include="Content\img\badges_tab.png" />
+    <Content Include="Content\img\CreateNinja.png" />
     <Content Include="Content\img\DatabaseObjects.png" />
     <Content Include="Content\img\foreign_key_badge_steps.png" />
     <Content Include="Content\img\GITCheckIn.png" />
+    <Content Include="Content\img\MVCControllerEF.png" />
+    <Content Include="Content\img\NinjaList.png" />
+    <Content Include="Content\img\NinjaListMobileEmulator.png" />
+    <Content Include="Content\img\NinjaListPopulated.png" />
+    <Content Include="Content\img\NinjaModel.png" />
     <Content Include="Content\img\ninja_tab.png" />
     <Content Include="Content\img\updateEDMXModel.png" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -415,18 +423,21 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\CreatingTables.cshtml" />
-    <Content Include="Views\Home\ForeignKeys.cshtml" />
-    <Content Include="Views\Home\Attendance.cshtml" />
-    <Content Include="Views\Home\DojoClass.cshtml" />
-    <Content Include="Views\Home\Mentors.cshtml" />
-    <Content Include="Views\Home\EntityFramework.cshtml" />
-    <Content Include="Views\Home\NinjaAppServices.cshtml" />
+    <Content Include="Views\Tutorial\CreatingTables.cshtml" />
+    <Content Include="Views\Tutorial\ForeignKeys.cshtml" />
+    <Content Include="Views\Tutorial\Attendance.cshtml" />
+    <Content Include="Views\Tutorial\DojoClass.cshtml" />
+    <Content Include="Views\Tutorial\Mentors.cshtml" />
+    <Content Include="Views\Tutorial\EntityFramework.cshtml" />
+    <Content Include="Views\Tutorial\NinjaAppServices.cshtml" />
     <Content Include="Views\ninja\Create.cshtml" />
     <Content Include="Views\ninja\Delete.cshtml" />
     <Content Include="Views\ninja\Details.cshtml" />
     <Content Include="Views\ninja\Edit.cshtml" />
     <Content Include="Views\ninja\Index.cshtml" />
+    <Content Include="Views\Tutorial\ninjaCRUDMagic.cshtml" />
+    <Content Include="Views\Tutorial\Index.cshtml" />
+    <Content Include="Views\Tutorial\InterfaceCleanUp.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

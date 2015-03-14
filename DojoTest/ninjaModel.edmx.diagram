@@ -7,7 +7,7 @@
       <Diagram DiagramId="95abcde4acf246bfaa3888bf9e60f462" Name="Diagram1">
         <EntityTypeShape EntityType="DojoModel.badge" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DojoModel.badgeStep" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DojoModel.badgeStepsAchieved" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DojoModel.badgeStepsAchieved" Width="1.5" PointX="5.375" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="DojoModel.dojoClass" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DojoModel.mentor" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DojoModel.mentorAttendance" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />

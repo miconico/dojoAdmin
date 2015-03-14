@@ -9,40 +9,7 @@ namespace DojoTest.Controllers
     public class HomeController : Controller
     {
 
-        public ActionResult Attendance()
-        {
-            return View();
-        }
-
-        public ActionResult DojoClass()
-        {
-            return View();
-        }
-
-        public ActionResult Mentors()
-        {
-            return View();
-        }
-
-        public ActionResult CreatingTables()
-        {
-            return View();
-        }
-
-        public ActionResult ForeignKeys()
-        {
-            return View();
-        }
-
-        public ActionResult EntityFramework()
-        {
-            return View();
-        }
-
-        public ActionResult NinjaAppServices()
-        {
-            return View();
-        }
+        
 
         public ActionResult Index()
         {

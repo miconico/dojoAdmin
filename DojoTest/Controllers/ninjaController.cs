@@ -10,7 +10,7 @@ using DojoTest;
 
 namespace DojoTest.Controllers
 {
-    public class ninjaController : Controller
+    public class NinjaController : Controller
     {
         private DojoContext db = new DojoContext();
 
