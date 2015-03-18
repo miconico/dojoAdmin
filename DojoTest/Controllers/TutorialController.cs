@@ -59,6 +59,10 @@ namespace DojoTest.Controllers
             return View();
         }
 
+        public ActionResult AddingStyle()
+        {
+            return View();
+        }
 
     }
 }
