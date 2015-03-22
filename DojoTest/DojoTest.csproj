@@ -269,6 +269,7 @@
     <Content Include="Content\css\clean-blog.min.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\fontLora.css" />
+    <Content Include="Content\css\sidemenu.css" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\css\SocialLogin.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -282,9 +283,11 @@
     <Content Include="Content\img\Bootsnip.png" />
     <Content Include="Content\img\CreateNinja.png" />
     <Content Include="Content\img\DatabaseObjects.png" />
+    <Content Include="Content\img\DojoLogo.jpeg" />
     <Content Include="Content\img\foreign_key_badge_steps.png" />
     <Content Include="Content\img\GetBootstrap.png" />
     <Content Include="Content\img\GITCheckIn.png" />
+    <Content Include="Content\img\littleNinjaScratch.png" />
     <Content Include="Content\img\MVCControllerEF.png" />
     <Content Include="Content\img\MVCProj.png" />
     <Content Include="Content\img\NinjaList.png" />
@@ -329,6 +332,8 @@
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Properties\PublishProfiles\arvixe.pubxml" />
+    <None Include="Properties\PublishProfiles\staging.coderdojoport.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -382,7 +387,6 @@
     <Content Include="Views\Tutorial\ForeignKeys.cshtml" />
     <Content Include="Views\Tutorial\Attendance.cshtml" />
     <Content Include="Views\Tutorial\DojoClass.cshtml" />
-    <Content Include="Views\Tutorial\Mentors.cshtml" />
     <Content Include="Views\Tutorial\EntityFramework.cshtml" />
     <Content Include="Views\Tutorial\NinjaAppServices.cshtml" />
     <Content Include="Views\ninja\Create.cshtml" />
@@ -394,6 +398,7 @@
     <Content Include="Views\Tutorial\Index.cshtml" />
     <Content Include="Views\Tutorial\InterfaceCleanUp.cshtml" />
     <Content Include="Views\Tutorial\AddingStyle.cshtml" />
+    <Content Include="Views\Tutorial\WebDeploy.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

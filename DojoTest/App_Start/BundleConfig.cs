@@ -35,6 +35,9 @@ namespace DojoTest
             bundles.Add(new ScriptBundle("~/bundles/bootstrapjs").Include(
                         "~/Scripts/bootstrap.min.js"));
 
+            bundles.Add(new ScriptBundle("~/Content/sidemenu").Include(
+                        "~/Content/css/sidemenu.css"));
+
             bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include(
                         "~/Content/css/bootstrap.min.css",
                         "~/Content/css/bootstrap-responsive.min.css"));

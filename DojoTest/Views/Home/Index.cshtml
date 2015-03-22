@@ -3,93 +3,47 @@
 }
 <div class="container">
     <div class="omb_login">
-        <h3 class="omb_authTitle">truly really newsly</h3>
-        <div class="row omb_row-sm-offset-3 omb_socialButtons">
-            <div class="col-xs-4 col-sm-2">
-                <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
-                    <i class="fa fa-facebook visible-xs"></i>
-                    <span class="hidden-xs">Comparisons</span>
-                </a>
+        <h3 class="omb_authTitle"><img src="~/Content/img/DojoLogo.jpeg" width="125" height="125" class="img-circle" alt="CoderDojo Portarlington"></h3>         
+    </div>
+
+            <div class="row omb_row-sm-offset-3 omb_loginOr">
+                <div class="col-xs-12 col-sm-6">
+                    <hr class="omb_hrOr">
+                </div>
             </div>
-            <div class="col-xs-4 col-sm-2">
-                <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
-                    <i class="fa fa-twitter visible-xs"></i>
-                    <span class="hidden-xs">Solutions</span>
-                </a>
+
+            <div class="row omb_row-sm-offset-3">
+                <div class="col-xs-12 col-sm-6">
+                    @using (Html.BeginForm("Login", "Profile", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "omb_loginForm", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <span class="help-block">@Html.ValidationSummary(true, "", new { @class = "text-danger" })</span>
+
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Make a story</button>
+                    }
+                </div>
             </div>
-            <div class="col-xs-4 col-sm-2">
-                <a href="#" class="btn btn-lg btn-block omb_btn-google">
-                    <i class="fa fa-google-plus visible-xs"></i>
-                    <span class="hidden-xs"></span>
-                </a>
+            <div class="row omb_row-sm-offset-3">
+                <div class="col-xs-12 col-sm-3">
+                    <label class="checkbox">
+                    </label>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <p class="omb_forgotPwd">
+                        @Html.ActionLink("Forgot password?", "ForgotPassword")
+                    </p>
+                </div>
             </div>
         </div>
 
-        <div class="row omb_row-sm-offset-3 omb_loginOr">
-            <div class="col-xs-12 col-sm-6">
-                <hr class="omb_hrOr">
-                <span class="omb_spanOr">or</span>
-            </div>
-        </div>
-
-        <div class="row omb_row-sm-offset-3">
-            <div class="col-xs-12 col-sm-6">
-                @using (Html.BeginForm("Login", "Profile", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "omb_loginForm", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-
-                    <span class="help-block">@Html.ValidationSummary(true, "", new { @class = "text-danger" })</span>
-
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Make a story</button>
-                }
-            </div>
-        </div>
-        <div class="row omb_row-sm-offset-3">
-            <div class="col-xs-12 col-sm-3">
-                <label class="checkbox">
-                </label>
-            </div>
-            <div class="col-xs-12 col-sm-3">
-                <p class="omb_forgotPwd">
-                    @Html.ActionLink("Forgot password?", "ForgotPassword")
-                </p>
-            </div>
+    <div class="row omb_row-sm-offset-3">
+        <div class="col-xs-12 col-sm-6">
+            <a class="twitter-timeline" href="https://twitter.com/CoderDojoPort" data-widget-id="579405440938827777">Tweets by @@CoderDojoPort</a>
+            <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
         </div>
     </div>
+
+
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
-<h2>Who is the media</h2>
-where are they and how are they slanting things
-
-x was killed today
-
-- he was a hero
-- he was a terrorist
-
-There was a 40% reduction in x since 2012
-
-- there's a 200% increase since 2010
-- there was no x in the city in 2014
-
-Ireland was the fastest growing economy in europe in 2014
-
-- people take to the streets to show their discontent with further austerity
-- finance minister says we've turned a corner
-
-what to put together - start building the first page
-
-
-the bias in news from what you hear
-
-chinese whispers
-
-hearing the other side
-
-not getting the full picture
-
-Rupert Murdoch said there is no such thing as a free news story and unfortunately
-
-you can buy a t-shirt with your profile printed

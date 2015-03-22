@@ -75,8 +75,8 @@
           <Property Name="bio" Type="varchar(max)" />
           <Property Name="joined" Type="datetime" Nullable="false" />
           <Property Name="websiteUrl" Type="varchar" MaxLength="250" />
-          <Property Name="DOB" Type="date" />
           <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="DOB" Type="date" />
         </EntityType>
         <EntityType Name="ninjaAttendance">
           <Key>
