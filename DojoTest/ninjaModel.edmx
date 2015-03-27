@@ -158,6 +158,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ninja_classId">
+          <End Role="dojoClass" Type="Self.dojoClass" Multiplicity="1" />
+          <End Role="ninja" Type="Self.ninja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dojoClass">
+              <PropertyRef Name="classId" />
+            </Principal>
+            <Dependent Role="ninja">
+              <PropertyRef Name="classId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ninjaAttendance_dojoClass">
           <End Role="dojoClass" Type="Self.dojoClass" Multiplicity="1" />
           <End Role="ninjaAttendance" Type="Self.ninjaAttendance" Multiplicity="*" />
@@ -214,6 +226,10 @@
           <AssociationSet Name="FK_mentorAttendance_mentor" Association="Self.FK_mentorAttendance_mentor">
             <End Role="mentor" EntitySet="mentor" />
             <End Role="mentorAttendance" EntitySet="mentorAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ninja_classId" Association="Self.FK_ninja_classId">
+            <End Role="dojoClass" EntitySet="dojoClass" />
+            <End Role="ninja" EntitySet="ninja" />
           </AssociationSet>
           <AssociationSet Name="FK_ninjaAttendance_dojoClass" Association="Self.FK_ninjaAttendance_dojoClass">
             <End Role="dojoClass" EntitySet="dojoClass" />
@@ -275,6 +291,7 @@
           <NavigationProperty Name="mentor" Relationship="Self.FK_dojoClass_mentor" FromRole="dojoClass" ToRole="mentor" />
           <NavigationProperty Name="mentorAttendances" Relationship="Self.FK_mentorAttendance_dojoClass" FromRole="dojoClass" ToRole="mentorAttendance" />
           <NavigationProperty Name="ninjaAttendances" Relationship="Self.FK_ninjaAttendance_dojoClass" FromRole="dojoClass" ToRole="ninjaAttendance" />
+          <NavigationProperty Name="ninjas" Relationship="DojoModel.FK_ninja_classId" FromRole="dojoClass" ToRole="ninja" />
         </EntityType>
         <EntityType Name="mentor">
           <Key>
@@ -314,6 +331,7 @@
           <NavigationProperty Name="badgeStepsAchieveds" Relationship="Self.FK_badgeStepsAchieved_ninja" FromRole="ninja" ToRole="badgeStepsAchieved" />
           <NavigationProperty Name="ninjaAttendance" Relationship="Self.FK_ninjaAttendance_ninja" FromRole="ninja" ToRole="ninjaAttendance" />
           <Property Name="DOB" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="dojoClass" Relationship="DojoModel.FK_ninja_classId" FromRole="ninja" ToRole="dojoClass" />
         </EntityType>
         <EntityType Name="ninjaAttendance">
           <Key>
@@ -462,7 +480,23 @@
             <End Role="ninja" EntitySet="ninjas" />
             <End Role="ninjaAttendance" EntitySet="ninjaAttendances" />
           </AssociationSet>
+          <AssociationSet Name="FK_ninja_classId" Association="DojoModel.FK_ninja_classId">
+            <End Role="dojoClass" EntitySet="dojoClasses" />
+            <End Role="ninja" EntitySet="ninjas" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_ninja_classId">
+          <End Type="DojoModel.dojoClass" Role="dojoClass" Multiplicity="1" />
+          <End Type="DojoModel.ninja" Role="ninja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dojoClass">
+              <PropertyRef Name="classId" />
+            </Principal>
+            <Dependent Role="ninja">
+              <PropertyRef Name="classId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

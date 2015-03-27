@@ -18,6 +18,7 @@ namespace DojoTest
         {
             this.mentorAttendances = new HashSet<mentorAttendance>();
             this.ninjaAttendances = new HashSet<ninjaAttendance>();
+            this.ninjas = new HashSet<ninja>();
         }
     
         public int classId { get; set; }
@@ -31,5 +32,6 @@ namespace DojoTest
         public virtual mentor mentor { get; set; }
         public virtual ICollection<mentorAttendance> mentorAttendances { get; set; }
         public virtual ICollection<ninjaAttendance> ninjaAttendances { get; set; }
+        public virtual ICollection<ninja> ninjas { get; set; }
     }
 }

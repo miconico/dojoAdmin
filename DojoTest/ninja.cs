@@ -30,5 +30,6 @@ namespace DojoTest
     
         public virtual ICollection<badgeStepsAchieved> badgeStepsAchieveds { get; set; }
         public virtual ninjaAttendance ninjaAttendance { get; set; }
+        public virtual dojoClass dojoClass { get; set; }
     }
 }

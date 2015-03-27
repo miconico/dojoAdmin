@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="DojoModel.dojoClass" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DojoModel.mentor" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DojoModel.mentorAttendance" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DojoModel.ninja" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DojoModel.ninja" Width="1.5" PointX="2.875" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DojoModel.ninjaAttendance" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="DojoModel.FK_badge_steps_badges" ManuallyRouted="false" />
         <AssociationConnector Association="DojoModel.FK_bagdgeStepsAchieved_badgeSteps" ManuallyRouted="false" />
@@ -21,6 +21,7 @@
         <AssociationConnector Association="DojoModel.FK_ninjaAttendance_dojoClass" ManuallyRouted="false" />
         <AssociationConnector Association="DojoModel.FK_mentorAttendance_mentor" ManuallyRouted="false" />
         <AssociationConnector Association="DojoModel.FK_ninjaAttendance_ninja" ManuallyRouted="false" />
+        <AssociationConnector Association="DojoModel.FK_ninja_classId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

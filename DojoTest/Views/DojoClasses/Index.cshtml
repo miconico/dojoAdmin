@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DojoTest.dojoClass>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.className)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.classDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateCommenced)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.classUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mentor.forename)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.className)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.classDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateCommenced)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.classUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mentor.forename)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.classId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.classId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.classId })
+        </td>
+    </tr>
+}
+
+</table>

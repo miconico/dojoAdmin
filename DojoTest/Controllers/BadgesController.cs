@@ -10,112 +10,107 @@ using DojoTest;
 
 namespace DojoTest.Controllers
 {
-    public class NinjaController : Controller
+    public class BadgesController : Controller
     {
         private DojoContext db = new DojoContext();
 
-        // GET: ninja
+        // GET: Badges
         public ActionResult Index()
         {
-            var ninjas = db.ninjas.Include(n => n.ninjaAttendance);
-            return View(ninjas.ToList());
+            return View(db.badges.ToList());
         }
 
-        // GET: ninja/Details/5
+        // GET: Badges/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ninja ninja = db.ninjas.Find(id);
-            if (ninja == null)
+            badge badge = db.badges.Find(id);
+            if (badge == null)
             {
                 return HttpNotFound();
             }
-            return View(ninja);
+            return View(badge);
         }
 
-        // GET: ninja/Create
+        // GET: Badges/Create
         public ActionResult Create()
         {
-            ViewBag.ninjaId = new SelectList(db.ninjaAttendances, "ninjaId", "ninjaId");
             return View();
         }
 
-        // POST: ninja/Create
+        // POST: Badges/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ninjaId,ninjaName,classId,bio,joined,websiteUrl,active,DOB")] ninja ninja)
+        public ActionResult Create([Bind(Include = "badgeId,name,description,badgeStepId,active")] badge badge)
         {
             if (ModelState.IsValid)
             {
-                db.ninjas.Add(ninja);
+                db.badges.Add(badge);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ninjaId = new SelectList(db.ninjaAttendances, "ninjaId", "ninjaId", ninja.ninjaId);
-            return View(ninja);
+            return View(badge);
         }
 
-        // GET: ninja/Edit/5
+        // GET: Badges/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ninja ninja = db.ninjas.Find(id);
-            if (ninja == null)
+            badge badge = db.badges.Find(id);
+            if (badge == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ninjaId = new SelectList(db.ninjaAttendances, "ninjaId", "ninjaId", ninja.ninjaId);
-            return View(ninja);
+            return View(badge);
         }
 
-        // POST: ninja/Edit/5
+        // POST: Badges/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ninjaId,ninjaName,classId,bio,joined,websiteUrl,active,DOB")] ninja ninja)
+        public ActionResult Edit([Bind(Include = "badgeId,name,description,badgeStepId,active")] badge badge)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ninja).State = EntityState.Modified;
+                db.Entry(badge).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ninjaId = new SelectList(db.ninjaAttendances, "ninjaId", "ninjaId", ninja.ninjaId);
-            return View(ninja);
+            return View(badge);
         }
 
-        // GET: ninja/Delete/5
+        // GET: Badges/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ninja ninja = db.ninjas.Find(id);
-            if (ninja == null)
+            badge badge = db.badges.Find(id);
+            if (badge == null)
             {
                 return HttpNotFound();
             }
-            return View(ninja);
+            return View(badge);
         }
 
-        // POST: ninja/Delete/5
+        // POST: Badges/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ninja ninja = db.ninjas.Find(id);
-            db.ninjas.Remove(ninja);
+            badge badge = db.badges.Find(id);
+            db.badges.Remove(badge);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

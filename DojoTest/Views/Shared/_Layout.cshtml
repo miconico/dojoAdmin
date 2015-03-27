@@ -63,7 +63,14 @@
                             <span class="full-nav"> Tutorials </span>
                         </a>
                     </li>
-                    
+                    <li>
+                        <a href="/Ninjas/">
+                            <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Ninjas">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                            </span>
+                            <span class="full-nav"> Ninjas </span>
+                        </a>
+                    </li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -85,7 +92,9 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     
-    <script>$(document).ready(function () {
+    <script>
+
+    $(document).ready(function () {
     $('.navbar-nav [data-toggle="tooltip"]').tooltip();
     $('.navbar-twitch-toggle').on('click', function (event) {
         event.preventDefault();

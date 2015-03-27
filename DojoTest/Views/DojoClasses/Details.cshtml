@@ -1,0 +1,66 @@
+﻿@model DojoTest.dojoClass
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>dojoClass</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.className)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.className)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.classDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.classDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateCommenced)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateCommenced)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.classUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.classUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mentor.forename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mentor.forename)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.classId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -214,8 +214,11 @@
       <DependentUpon>ninjaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BadgesController.cs" />
+    <Compile Include="Controllers\DojoClassesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NinjaController.cs" />
+    <Compile Include="Controllers\MentorsController.cs" />
+    <Compile Include="Controllers\NinjasController.cs" />
     <Compile Include="Controllers\TutorialController.cs" />
     <Compile Include="DBServices\NinjaDBServices.cs" />
     <Compile Include="dojoClass.cs">
@@ -232,6 +235,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ninjaMetadata.cs" />
     <Compile Include="ninja.cs">
       <DependentUpon>ninjaModel.tt</DependentUpon>
     </Compile>
@@ -389,16 +393,32 @@
     <Content Include="Views\Tutorial\DojoClass.cshtml" />
     <Content Include="Views\Tutorial\EntityFramework.cshtml" />
     <Content Include="Views\Tutorial\NinjaAppServices.cshtml" />
-    <Content Include="Views\ninja\Create.cshtml" />
-    <Content Include="Views\ninja\Delete.cshtml" />
-    <Content Include="Views\ninja\Details.cshtml" />
-    <Content Include="Views\ninja\Edit.cshtml" />
-    <Content Include="Views\ninja\Index.cshtml" />
     <Content Include="Views\Tutorial\ninjaCRUDMagic.cshtml" />
     <Content Include="Views\Tutorial\Index.cshtml" />
     <Content Include="Views\Tutorial\InterfaceCleanUp.cshtml" />
     <Content Include="Views\Tutorial\AddingStyle.cshtml" />
     <Content Include="Views\Tutorial\WebDeploy.cshtml" />
+    <Content Include="Views\Tutorial\AddingData.cshtml" />
+    <Content Include="Views\Mentors\Create.cshtml" />
+    <Content Include="Views\Mentors\Delete.cshtml" />
+    <Content Include="Views\Mentors\Details.cshtml" />
+    <Content Include="Views\Mentors\Edit.cshtml" />
+    <Content Include="Views\Mentors\Index.cshtml" />
+    <Content Include="Views\DojoClasses\Create.cshtml" />
+    <Content Include="Views\DojoClasses\Delete.cshtml" />
+    <Content Include="Views\DojoClasses\Details.cshtml" />
+    <Content Include="Views\DojoClasses\Edit.cshtml" />
+    <Content Include="Views\DojoClasses\Index.cshtml" />
+    <Content Include="Views\Badges\Create.cshtml" />
+    <Content Include="Views\Badges\Delete.cshtml" />
+    <Content Include="Views\Badges\Details.cshtml" />
+    <Content Include="Views\Badges\Edit.cshtml" />
+    <Content Include="Views\Badges\Index.cshtml" />
+    <Content Include="Views\Ninjas\Create.cshtml" />
+    <Content Include="Views\Ninjas\Delete.cshtml" />
+    <Content Include="Views\Ninjas\Details.cshtml" />
+    <Content Include="Views\Ninjas\Edit.cshtml" />
+    <Content Include="Views\Ninjas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
