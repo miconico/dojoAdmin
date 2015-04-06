@@ -32,7 +32,7 @@
             <div class="">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="#">
+                        <a href="/Home/">
                             <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Home">
                                 <span class="glyphicon glyphicon-home"></span>
                             </span>
@@ -40,7 +40,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#about-us">
+                        <a href="/Home/About">
                             <span class="small-nav" data-toggle="tooltip" data-placement="right" title="About Us">
                                 <span class="fa fa-users"></span>
                             </span>
@@ -48,7 +48,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#contact-us">
+                        <a href="/Home/Contact">
                             <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Contact Us">
                                 <span class="glyphicon glyphicon-comment"></span>
                             </span>
@@ -58,7 +58,7 @@
                     <li>
                         <a href="/Tutorial/">
                             <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Tutorials">
-                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <span class="glyphicon glyphicon-folder-open"></span>
                             </span>
                             <span class="full-nav"> Tutorials </span>
                         </a>
@@ -66,7 +66,7 @@
                     <li>
                         <a href="/Ninjas/">
                             <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Ninjas">
-                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <span class="glyphicon glyphicon-user"></span>
                             </span>
                             <span class="full-nav"> Ninjas </span>
                         </a>
@@ -90,25 +90,9 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/menu")
+
     @RenderSection("scripts", required: false)
     
-    <script>
-
-    $(document).ready(function () {
-    $('.navbar-nav [data-toggle="tooltip"]').tooltip();
-    $('.navbar-twitch-toggle').on('click', function (event) {
-        event.preventDefault();
-        $('.navbar-twitch').toggleClass('open');
-    });
-
-    $('.nav-style-toggle').on('click', function (event) {
-        event.preventDefault();
-        var $current = $('.nav-style-toggle.disabled');
-        $(this).addClass('disabled');
-        $current.removeClass('disabled');
-        $('.navbar-twitch').removeClass('navbar-' + $current.data('type'));
-        $('.navbar-twitch').addClass('navbar-' + $(this).data('type'));
-    });
-});</script>
 </body>
 </html>

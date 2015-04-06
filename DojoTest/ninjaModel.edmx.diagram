@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="95abcde4acf246bfaa3888bf9e60f462" Name="Diagram1">
-        <EntityTypeShape EntityType="DojoModel.badge" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DojoModel.badgeStep" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DojoModel.badgeStepsAchieved" Width="1.5" PointX="5.375" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="DojoModel.dojoClass" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DojoModel.mentor" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DojoModel.mentorAttendance" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DojoModel.ninja" Width="1.5" PointX="2.875" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DojoModel.ninjaAttendance" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DojoModel.badge" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DojoModel.badgeStep" Width="1.5" PointX="8.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DojoModel.badgeStepsAchieved" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DojoModel.dojoClass" Width="1.5" PointX="2.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DojoModel.mentor" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DojoModel.mentorAttendance" Width="1.5" PointX="4.875" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DojoModel.ninja" Width="1.5" PointX="6.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DojoModel.ninjaAttendance" Width="1.5" PointX="4.75" PointY="0.625" IsExpanded="true" />
         <AssociationConnector Association="DojoModel.FK_badge_steps_badges" ManuallyRouted="false" />
         <AssociationConnector Association="DojoModel.FK_bagdgeStepsAchieved_badgeSteps" ManuallyRouted="false" />
         <AssociationConnector Association="DojoModel.FK_badgeStepsAchieved_ninja" ManuallyRouted="false" />

@@ -302,6 +302,7 @@
     <Content Include="Content\img\updateEDMXModel.png" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Scripts\menu.js" />
     <Content Include="Content\js\npm.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -419,6 +420,7 @@
     <Content Include="Views\Ninjas\Details.cshtml" />
     <Content Include="Views\Ninjas\Edit.cshtml" />
     <Content Include="Views\Ninjas\Index.cshtml" />
+    <Content Include="Views\Ninjas\IndexScaffold.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
